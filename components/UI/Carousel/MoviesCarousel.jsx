@@ -32,23 +32,24 @@ export default function MoviesCarousel({ movies }) {
             <SwiperSlide className="w-full" key={movie.id}>
               <div>
                 <Image
-                  className="rounded-xl shadow"
+                  loading="lazy"
+                  className="shadow rounded-xl"
                   src={`https://image.tmdb.org/t/p/w342/${movie.poster_path}`}
                   alt={`${movie.title} - Poster`}
                   width={500}
                   height={700}
                 />
                 <div className="py-1">
-                  <span className="text-green-600 mb-1 text-sm lg:text-base">
+                  <span className="mb-1 text-sm text-green-600 lg:text-base">
                     {new Date(movie.release_date).getFullYear()} /
                     {genres.map((genre) => {
                       if (genre.id === movie.genre_ids[0]) {
-                        return <span> {genre.name}</span>;
+                        return <span key={genre.id}> {genre.name}</span>;
                       }
                     })}
                   </span>
                   <Link href={`/movie/${movie.id}`}>
-                    <span className="font-medium hover:text-green-600 lg:text-base transform duration-300 leading-snug block text-white/80 text-sm">
+                    <span className="block text-sm font-medium leading-snug duration-300 transform hover:text-green-600 lg:text-base text-white/80">
                       {movie.title}
                     </span>
                   </Link>
