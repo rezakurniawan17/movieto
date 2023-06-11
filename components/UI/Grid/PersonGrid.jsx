@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 export default function PersonGrid({ persons }) {
-  console.log(persons);
   return (
     <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
       {persons?.slice(0, 10).map((person) => {

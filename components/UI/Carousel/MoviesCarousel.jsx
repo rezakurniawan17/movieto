@@ -2,6 +2,7 @@
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+import slugify from "slugify";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -48,7 +49,17 @@ export default function MoviesCarousel({ movies }) {
                       }
                     })}
                   </span>
-                  <Link href={`/movie/${movie.id}`}>
+                  <Link
+                    href={{
+                      pathname: `/movie/${movie.id.toString()}-${slugify(
+                        movie.title,
+                        {
+                          remove: /[*+~.()'"!:@]/g,
+                          lower: true,
+                        }
+                      )}`,
+                    }}
+                  >
                     <span className="block text-sm font-medium leading-snug duration-300 transform hover:text-green-600 lg:text-base text-white/80">
                       {movie.title}
                     </span>
