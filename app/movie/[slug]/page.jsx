@@ -40,7 +40,6 @@ export default async function Page({ params }) {
   const id = params.slug.slice(0, 6);
   const detail = await getDetailMovie(id);
   const credit = await getCreditMovie(id);
-  console.log(detail);
   return (
     <div className="relative py-6">
       {/* Movie Poster */}
